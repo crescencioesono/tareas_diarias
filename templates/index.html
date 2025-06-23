@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='estilos.css')}}">
+    <title>Tareas Diarias</title>
+</head>
+
+<body>
+    <div class="contenedor">
+        <div>
+            <h2>Inicio de sesion</h2>
+        </div>
+        <div>
+            <form action="/login" method="post">
+                <div>
+                    <label for="">Usuario</label>
+                    <input type="text" name="usuario">
+                </div>
+                <div>
+                    <label for="">Contraseña</label>
+                    <input type="password" name="contrasena">
+                </div>
+                <div class="contenedor_boton">
+                    <input type="submit">
+                </div>
+            </form>
+            <div>
+                <p>¿No tienes cuenta? <a href="/register-page"> regístrate</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

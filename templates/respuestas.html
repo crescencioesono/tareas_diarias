@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profesor - respuestas de los alumnos</title>
+</head>
+<body>
+    <h2>respuestas de los alumnos</h2>
+
+    {% if respuesta %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>alumno</th>
+                <th>respuestas</th>
+                <th>hora de envio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for respuesta in respuestas %}
+            <tr>
+                <tb>{{ respuesta[0] }}</tb>
+                <tb>{{ respuesta[1] }}</tb>
+                <tb>{{ respuesta[2] }}</tb>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+     <p>no hay respuestas aun.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alumno_tareas</title>
+</head>
+<body>
+    <h2>Tarea Asignada</h2>
+    {% if tarea %}
+    <p><strong>Titulo:</strong> {{ tarea[1] }}</p>
+    <p><strong>Descripcion:</strong></p>
+    <p>{{ tarea[2] }}</p>
+    <p><strong>Hora limite</strong> {{ tarea[3] }}</p>
+
+    <hr>
+    <h3>Enviar respuesta</h3>
+    <form action="/enviar-respuesta" method="POST">
+        <texttarea name="respuesta" rows="5" cols="50" placeholder="Escribe tu respuesta aqui..."></texttarea><br><br>
+    </form>
+    {% else %}
+    <p>No hay tareas disponibles por el momento.</p>
+    {% endif %}
+</body>
+</html>
