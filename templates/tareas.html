@@ -1,25 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>alumno_tareas</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='estilos.css')}}">
+    <title>Tareas pendientes</title>
 </head>
-<body>
-    <h2>Tarea Asignada</h2>
-    {% if tarea %}
-    <p><strong>Titulo:</strong> {{ tarea[1] }}</p>
-    <p><strong>Descripcion:</strong></p>
-    <p>{{ tarea[2] }}</p>
-    <p><strong>Hora limite</strong> {{ tarea[3] }}</p>
 
-    <hr>
-    <h3>Enviar respuesta</h3>
-    <form action="/enviar-respuesta" method="POST">
-        <texttarea name="respuesta" rows="5" cols="50" placeholder="Escribe tu respuesta aqui..."></texttarea><br><br>
-    </form>
-    {% else %}
-    <p>No hay tareas disponibles por el momento.</p>
-    {% endif %}
+<body>
+    <div>
+        <div class="opciones">
+            <a href="/logout">Salir</a>
+        </div>
+        <div>
+            <h2>Tarea Asignada</h2>
+        </div>
+        {% if tareas %}
+        {% for tarea in tareas %}
+        <div>
+            <p><strong>Titulo:</strong> {{ tarea[1] }}</p>
+            <p><strong>Descripcion:</strong></p>
+            <p>{{ tarea[2] }}</p>
+        </div>
+        {% if tarea[5] %}
+        <div>
+            <p>Cailificaion: <strong>{{ tarea[5].upper() }}</strong></p>
+        </div>
+        {% else %}
+        <div>
+            <p><strong>Fecha limite</strong> {{ tarea[3] }}</p>
+            <h3>Enviar respuesta</h3>
+            <form action="/enviar-respuesta/{{tarea[0]}}" method="POST">
+                <div>
+                    <textarea name="respuesta" rows="5" cols="50" placeholder="Escribe tu respuesta aquí..."></textarea>
+                </div>
+                <div class="contenedor_boton">
+                    <input type="submit" value="Enviar">
+                </div>
+            </form>
+        </div>
+        {% endif %}
+        <hr>
+        {% endfor %}
+        {% else %}
+        <p>No hay tareas disponibles por el momento.</p>
+        {% endif %}
+    </div>
 </body>
+
 </html>
